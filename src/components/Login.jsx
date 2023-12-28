@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import DashBoard from "./DashBoard";
@@ -9,6 +9,9 @@ const Login = () => {
     password: " ",
   });
 
+  useEffect(() => {
+    document.getElementById("passwordInput").value = "";
+  }, []);
   const [notification, setNotification] = useState("");
 
   const history = useNavigate();
@@ -77,6 +80,7 @@ const Login = () => {
             name="email"
             value={loginData.email}
             onChange={handleChange}
+            placeholder="email"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
@@ -92,6 +96,8 @@ const Login = () => {
             name="password"
             value={loginData.password}
             onChange={handleChange}
+            placeholder="password"
+            id="passwordInput"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
