@@ -27,7 +27,7 @@ const Login = () => {
       .then((response) => {
         console.log(response.data);
         setUser(response.data);
-        history("/DashBoard");
+        history("/dashBoard");
       })
       .catch((error) => {
         if (error.response) {
