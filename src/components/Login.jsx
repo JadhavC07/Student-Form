@@ -56,7 +56,7 @@ const Login = () => {
       <div className="mb-4 text-red-500">{notification}</div>
       <NavLink
         type="button"
-        to="/all-students"
+        to="/Student-Form/all-students"
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
       >
         All
@@ -105,7 +105,7 @@ const Login = () => {
           {user && <DashBoard user={user} />}
           <NavLink
             type="button"
-            to="/registration"
+            to="/Student-Form/registration"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Regitration
