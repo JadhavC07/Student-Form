@@ -1,12 +1,10 @@
 {
-  "homepage": "https://github.com/JadhavC07/Student-Registration-form",
+  "homepage": "https://JadhavC07.github.io/Student-Form",
   "name": "two",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "npx gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
