@@ -1,44 +1,28 @@
 // UserDashboard.js
 import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
 
-const DashBoard = ({ user }) => {
-  console.log("Received user prop:", user);
-
-  console.log("Received user prop:", user);
-
-  if (!user || !user.userId || !user["Student Name"] || !user["Father Name"]) {
-    console.error("Invalid or incomplete user information:", user);
-    return <div>Error: Invalid or incomplete user information</div>;
-  }
-  const {
-    userId,
-    "Student Name": studentName,
-    "Father Name": fatherName,
-  } = user;
-
+const DashBoard = () => {
+  const location = useLocation();
+  const { state } = location;
+  const { user } = state || {};
   return (
     <div className="container mx-auto mt-8">
       <div className="max-w-md mx-auto bg-white rounded p-8 shadow-md">
-        {/* ... */}
         <div className="text-center mb-4">
-          <img
-            src={""}
-            alt="Profile Picture"
-            className="rounded-full h-16 w-16 mx-auto mb-4"
-          />
-          <p className="text-gray-500">Id: {userId}</p>
-          <h1 className="text-xl font-bold">Student Name: {studentName}</h1>
-          <p className="text-gray-500">Father Name: {fatherName}</p>
+          <h2>Welcome, {user ? user["Student Name "] : "Guest"}!</h2>
+          {user && user.message && <p>{user.message}</p>}
+          {user && user["Father Name"] && (
+            <p>Father Name: {user["Father Name"]}</p>
+          )}
+          {user && user.Gender && <p>Gender: {user.Gender}</p>}
+          {user && user["Blood Group"] && (
+            <p>Blood Group: {user["Blood Group"]}</p>
+          )}
+          {user && user.Course && <p>Course: {user.Course}</p>}
+          {user && user.userId && <p>User ID: {user.userId}</p>}
         </div>
-
-        <div>
-          <h2 className="text-lg font-semibold mb-4">User Information</h2>
-          {/* ... */}
-        </div>
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold mb-4">Change Password</h2>
-          {/* ... */}
-        </div>
+        {/* ... rest of the component */}
       </div>
     </div>
   );
@@ -46,9 +30,15 @@ const DashBoard = ({ user }) => {
 
 DashBoard.propTypes = {
   user: PropTypes.shape({
-    userId: PropTypes.number.isRequired,
-    "Student Name": PropTypes.string.isRequired,
-    "Father Name": PropTypes.string.isRequired,
+    "Student Name ": PropTypes.string.isRequired,
+    "Father Name": PropTypes.string,
+    Gender: PropTypes.string,
+    "Blood Group": PropTypes.string,
+    Course: PropTypes.string,
+    message: PropTypes.string,
+    userId: PropTypes.number,
+    // Add other properties based on your user object structure
   }),
 };
+
 export default DashBoard;

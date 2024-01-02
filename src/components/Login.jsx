@@ -1,5 +1,5 @@
-import { useState , useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import DashBoard from "./DashBoard";
 
@@ -13,9 +13,12 @@ const Login = () => {
     document.getElementById("passwordInput").value = "";
   }, []);
   const [notification, setNotification] = useState("");
+  const [userState, setUser] = useState(null);
 
   const history = useNavigate();
-  const [user, setUser] = useState(null);
+  const location = useLocation();
+  const { state } = location;
+  const { user } = state || {};
 
   const handleChange = (e) => {
     setLoginData({
@@ -30,7 +33,7 @@ const Login = () => {
       .then((response) => {
         console.log(response.data);
         setUser(response.data);
-        history("/dashBoard");
+        history("/Student-Form/dashboard", { state: { user: response.data } });
       })
       .catch((error) => {
         if (error.response) {

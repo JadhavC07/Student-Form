@@ -29,7 +29,7 @@ const StudentRegistration = () => {
       studentName: "",
       fatherName: "",
       lastName: "",
-      dob: "",
+      dob: "2023-12-01",
       course: "",
       bloodGroup: "",
       gender: "",
@@ -38,28 +38,53 @@ const StudentRegistration = () => {
     });
   };
 
+  // const sendDataToBackend = (data) => {
+  //   axios
+  //     .post("http://localhost:8080/api/submitForm", data)
+  //     .then((response) => {
+  //       console.log("Data sent successfully", response.data);
+  //       setNotification("Data sent successfully", response.data);
+  //     })
+  //     .catch((error) => {
+  //       setNotification("Error sending data to the backend", error);
+
+  //       if (error.response && error.response.status == 409) {
+  //         console.log("Conflict response details:", error.response.data);
+  //         setNotification(
+  //           "Error: Email already exists. Please use a different email."
+  //         );
+  //       } else {
+  //         console.log("Other error response details:", error.response.data);
+
+  //         setNotification("Error submitting form. Please try again.");
+  //       }
+  //     });
+  // };
   const sendDataToBackend = (data) => {
     axios
       .post("http://localhost:8080/api/submitForm", data)
       .then((response) => {
         console.log("Data sent successfully", response.data);
-        setNotification("Data sent successfully", response.data);
+        setNotification("Data sent successfully");
       })
       .catch((error) => {
-        setNotification("Error sending data to the backend", error);
+        console.error("Error sending data to the backend", error);
 
-        if (error.response && error.response.status == 409) {
-          console.log("Conflict response details:", error.response.data);
+        if (error.response) {
+          console.log("Error response details:", error.response.data);
           setNotification(
-            "Error: Email already exists. Please use a different email."
+            `Error: ${error.response.status} - ${error.response.data.message}`
           );
+        } else if (error.request) {
+          console.log("Error with request:", error.request);
+          setNotification("Error with the request. Please try again.");
         } else {
-          console.log("Other error response details:", error.response.data);
-
+          console.log("Other error details:", error.message);
           setNotification("Error submitting form. Please try again.");
         }
       });
   };
+
   return (
     <div className="max-w-md mx-auto">
       <h1
