@@ -11,11 +11,11 @@ import DashBoard from "./components/DashBoard";
 
 const router = createBrowserRouter([
   {
-    path: "Student-Form",
+    path: "/Student-Form",
     element: <App />,
     children: [
       {
-        path: "/Student-Form/",
+        path: "/Student-Form",
         element: <Login />,
       },
       {

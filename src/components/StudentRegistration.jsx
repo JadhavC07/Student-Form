@@ -38,31 +38,10 @@ const StudentRegistration = () => {
     });
   };
 
-  // const sendDataToBackend = (data) => {
-  //   axios
-  //     .post("http://localhost:8080/api/submitForm", data)
-  //     .then((response) => {
-  //       console.log("Data sent successfully", response.data);
-  //       setNotification("Data sent successfully", response.data);
-  //     })
-  //     .catch((error) => {
-  //       setNotification("Error sending data to the backend", error);
-
-  //       if (error.response && error.response.status == 409) {
-  //         console.log("Conflict response details:", error.response.data);
-  //         setNotification(
-  //           "Error: Email already exists. Please use a different email."
-  //         );
-  //       } else {
-  //         console.log("Other error response details:", error.response.data);
-
-  //         setNotification("Error submitting form. Please try again.");
-  //       }
-  //     });
-  // };
+  const baseURL = "http://192.168.210.235:8080/api";
   const sendDataToBackend = (data) => {
     axios
-      .post("http://localhost:8080/api/submitForm", data)
+      .post(`${baseURL}/submitForm`, data)
       .then((response) => {
         console.log("Data sent successfully", response.data);
         setNotification("Data sent successfully");
@@ -257,7 +236,7 @@ const StudentRegistration = () => {
           </button>
           <NavLink
             type="button"
-            to="/"
+            to="/Student-Form"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Back
