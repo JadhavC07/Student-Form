@@ -9,6 +9,7 @@ const StudentList = () => {
       .get("http://localhost:8080/api/getAllStudents")
       .then((response) => {
         setStudents(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching student data", error);

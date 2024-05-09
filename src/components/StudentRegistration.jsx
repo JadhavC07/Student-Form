@@ -38,7 +38,7 @@ const StudentRegistration = () => {
     });
   };
 
-  const baseURL = "https://192.168.210.235:8080/api";
+  const baseURL = "http://localhost:8080/api";
   const sendDataToBackend = (data) => {
     axios
       .post(`${baseURL}/submitForm`, data)
