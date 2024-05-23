@@ -6,7 +6,7 @@ const StudentList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/getAllStudents")
+      .get("https://back-end-deploy-production-c369.up.railway.app/api/getAllStudents")
       .then((response) => {
         setStudents(response.data);
         console.log(response.data);

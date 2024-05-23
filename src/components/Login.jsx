@@ -29,7 +29,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/api/login", loginData)
+      .post("https://back-end-deploy-production-c369.up.railway.app/api/login", loginData)
       .then((response) => {
         console.log(response.data);
         setUser(response.data);

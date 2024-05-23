@@ -29,7 +29,7 @@ const StudentRegistration = () => {
       studentName: "",
       fatherName: "",
       lastName: "",
-      dob: "2023-12-01",
+      dob: "",
       course: "",
       bloodGroup: "",
       gender: "",
@@ -38,7 +38,7 @@ const StudentRegistration = () => {
     });
   };
 
-  const baseURL = "http://localhost:8080/api";
+  const baseURL = "https://back-end-deploy-production-c369.up.railway.app/api";
   const sendDataToBackend = (data) => {
     axios
       .post(`${baseURL}/submitForm`, data)
